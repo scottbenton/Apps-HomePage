@@ -1,6 +1,5 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
-const { MFLiveReloadPlugin } = require("@module-federation/fmr");
 
 const Dotenv = require("dotenv-webpack");
 const deps = require("./package.json").dependencies;
@@ -22,6 +21,16 @@ module.exports = (_, argv) => [
     },
 
     devServer: {
+      host: "localhost",
+      hot: false,
+      liveReload: true,
+      client: {
+        webSocketURL: `ws://localhost:${PORT}/ws`,
+      },
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      },
+      allowedHosts: "all",
       port: PORT,
       historyApiFallback: true,
     },
@@ -46,6 +55,11 @@ module.exports = (_, argv) => [
             loader: "babel-loader",
           },
         },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          exclude: /node_modules/,
+          type: "asset/resource",
+        },
       ],
     },
 
@@ -67,15 +81,6 @@ module.exports = (_, argv) => [
           },
         },
       }),
-      ...(argv.mode === "development"
-        ? [
-            new MFLiveReloadPlugin({
-              port: PORT, // the port your app runs on
-              container: "scottbenton_micro_frontend_host", // the name of your app, must be unique
-              standalone: true, // false uses chrome extention
-            }),
-          ]
-        : []),
       new HtmlWebPackPlugin({
         template: "./src/index.html",
       }),
@@ -118,6 +123,11 @@ module.exports = (_, argv) => [
               },
             },
           ],
+        },
+        {
+          test: /\.(png|svg|jpg|jpeg|gif)$/i,
+          exclude: /node_modules/,
+          type: "asset/resource",
         },
       ],
     },

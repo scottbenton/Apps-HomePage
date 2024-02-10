@@ -1,14 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom";
+import ReactDOM from "react-dom/client";
 
-import "./index.scss";
+import HomePage from "./HomePage";
 
 const App = () => (
-  <div className="mt-10 text-3xl mx-auto max-w-6xl">
-    <div>Name: home-page</div>
-    <div>Framework: react</div>
-    <div>Language: TypeScript</div>
-    <div>CSS: Tailwind</div>
+  <div className="flex flex-col min-h-lvh">
+    <HomePage />
   </div>
 );
-ReactDOM.render(<App />, document.getElementById("app"));
+ReactDOM.createRoot(document.getElementById("app")!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+);
