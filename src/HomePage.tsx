@@ -2,6 +2,7 @@ import React from "react";
 import "./index.scss";
 import { ScottBentonLogo } from "./assets/ScottBentonLogo";
 import DeveloperSVG from "./assets/developer.svg";
+import { LoginSection } from "./components/LoginSection";
 
 export default function HomePage() {
   return (
@@ -15,6 +16,7 @@ export default function HomePage() {
             Scott's Apps
           </h1>
         </div>
+        <LoginSection />
       </header>
       <div
         className={
