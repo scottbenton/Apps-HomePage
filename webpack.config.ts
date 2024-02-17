@@ -4,7 +4,7 @@ import { ModuleScope } from "@scottbenton/apps-config";
 const config = constructModuleWebpackConfig(
   {
     name: ModuleScope.HomePage,
-    modules: [],
+    modules: [ModuleScope.Authentication],
     dependencies: {},
     exposes: {
       "./HomePage": "./src/HomePage.tsx",
