@@ -118,3 +118,5 @@ dist
 # Remote Module Types
 .wp_federation/
 @mf-types
+
+.vscode/

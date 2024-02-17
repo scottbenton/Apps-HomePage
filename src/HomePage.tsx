@@ -1,4 +1,3 @@
-import React from "react";
 import "./index.scss";
 import { ScottBentonLogo } from "./assets/ScottBentonLogo";
 import DeveloperSVG from "./assets/developer.svg";
@@ -13,7 +12,7 @@ export default function HomePage() {
         <div className={"flex items-center"}>
           <ScottBentonLogo />
           <h1 className={"ml-3 text-3xl font-bold text-home-500"}>
-            Scott's Apps
+            Scott{"'"}s Apps
           </h1>
         </div>
         <LoginSection />

@@ -1,5 +1,5 @@
-import { initModules } from "@scottbenton/apps-config";
+import { initModules } from '@scottbenton/apps-config'
 
-initModules();
+initModules()
 
-import("./App");
+import('./App')
